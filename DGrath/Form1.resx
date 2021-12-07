@@ -117,4 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Ишембитов Дамир ПРО-230 | Вариант 7 | Двусторонняя система дорог, причем для любой пары городов можно указать соединяющий их путь. Найти такой город, для которого сумма расстояния до остальных городов минимальна.
+</value>
+  </data>
 </root>

@@ -29,6 +29,7 @@ namespace DGrath
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.txbValue = new System.Windows.Forms.TextBox();
             this.buttonAdj = new System.Windows.Forms.Button();
             this.MGridView = new System.Windows.Forms.DataGridView();
@@ -49,6 +50,7 @@ namespace DGrath
             this.txbStart = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.MGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sheet)).BeginInit();
             this.panel1.SuspendLayout();
@@ -127,12 +129,11 @@ namespace DGrath
             // 
             this.sheet.BackColor = System.Drawing.SystemColors.Control;
             this.sheet.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.sheet.Location = new System.Drawing.Point(12, 12);
+            this.sheet.Location = new System.Drawing.Point(12, 50);
             this.sheet.Name = "sheet";
             this.sheet.Size = new System.Drawing.Size(634, 415);
             this.sheet.TabIndex = 0;
             this.sheet.TabStop = false;
-            this.sheet.Click += new System.EventHandler(this.sheet_Click);
             this.sheet.MouseClick += new System.Windows.Forms.MouseEventHandler(this.sheet_MouseClick);
             // 
             // panel1
@@ -142,7 +143,7 @@ namespace DGrath
             this.panel1.Controls.Add(this.DGridView);
             this.panel1.Controls.Add(this.buttonAdj);
             this.panel1.Controls.Add(this.MGridView);
-            this.panel1.Location = new System.Drawing.Point(655, 16);
+            this.panel1.Location = new System.Drawing.Point(655, 50);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(554, 238);
             this.panel1.TabIndex = 12;
@@ -183,14 +184,14 @@ namespace DGrath
             this.panel2.Controls.Add(this.deleteButton);
             this.panel2.Controls.Add(this.drawEdgeButton);
             this.panel2.Controls.Add(this.drawVertexButton);
-            this.panel2.Location = new System.Drawing.Point(655, 256);
+            this.panel2.Location = new System.Drawing.Point(655, 294);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(194, 171);
             this.panel2.TabIndex = 14;
             // 
             // txbRes
             // 
-            this.txbRes.Location = new System.Drawing.Point(12, 446);
+            this.txbRes.Location = new System.Drawing.Point(12, 484);
             this.txbRes.Name = "txbRes";
             this.txbRes.Size = new System.Drawing.Size(634, 20);
             this.txbRes.TabIndex = 15;
@@ -250,16 +251,26 @@ namespace DGrath
             this.panel3.Controls.Add(this.btnCycle);
             this.panel3.Controls.Add(this.btnDFC);
             this.panel3.Controls.Add(this.btnMinV);
-            this.panel3.Location = new System.Drawing.Point(855, 256);
+            this.panel3.Location = new System.Drawing.Point(864, 294);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(243, 170);
             this.panel3.TabIndex = 23;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(9, 19);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(1192, 13);
+            this.label3.TabIndex = 24;
+            this.label3.Text = resources.GetString("label3.Text");
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1221, 579);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.txbRes);
             this.Controls.Add(this.panel2);
@@ -302,6 +313,7 @@ namespace DGrath
         private System.Windows.Forms.TextBox txbStart;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label label3;
     }
 }
 

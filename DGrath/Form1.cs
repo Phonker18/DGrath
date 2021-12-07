@@ -334,16 +334,16 @@ namespace DGrath
             //For DFS use stack
             var stack = new Stack<int>();
             stack.Push(v);
-            visited[v] = true;
             while (stack.Count > 0)
             {
                 v = stack.Pop();
+                if (visited[v]!=true)
                 txbRes.Text = txbRes.Text + " -> " + (v + 1);
-                for (int i = 0; i < V.Count; i++)
+                visited[v] = true;
+                for (int i = V.Count-1; i >= 0; i--)
                 {
                     if (AMatrix[v, i] != 0 && !visited[i])
                     {
-                        visited[i] = true;
                         stack.Push(i);
                     }
                 }
@@ -463,11 +463,6 @@ namespace DGrath
         private void btnMinV_Click(object sender, EventArgs e)
         {
             foundMinV();
-        }
-
-        private void sheet_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
