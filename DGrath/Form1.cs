@@ -323,28 +323,28 @@ namespace DGrath
             }
             txbRes.Text = $"Город: {minV + 1} | минимальная сумма: {min}";
         }
-        private bool DFC(int v)
+        private bool DFC(int v) // v - нач. вершина
         {
             txbRes.Text = "";
-            bool[] visited = new bool[V.Count];
+            bool[] visited = new bool[V.Count]; // массив посещенных вершин
             for (int i = 0; i < V.Count; i++)
             {
-                visited[i] = false;
+                visited[i] = false;  //изначально все непосещенные
             }
             //For DFS use stack
             var stack = new Stack<int>();
-            stack.Push(v);
-            while (stack.Count > 0)
+            stack.Push(v); // заносим нач. вершину в стек
+            while (stack.Count > 0) // пока стек не пустой
             {
-                v = stack.Pop();
-                if (visited[v]!=true)
-                txbRes.Text = txbRes.Text + " -> " + (v + 1);
-                visited[v] = true;
-                for (int i = V.Count-1; i >= 0; i--)
+                v = stack.Pop(); // берем вершину из стека
+                if (visited[v]!=true) // если она непосещенная
+                txbRes.Text = txbRes.Text + " -> " + (v + 1); // записываем в текстовое поле
+                visited[v] = true; // в посещенные
+                for (int i = V.Count-1; i >= 0; i--) // идем в цикле по убыванию вершин
                 {
-                    if (AMatrix[v, i] != 0 && !visited[i])
+                    if (AMatrix[v, i] != 0 && !visited[i]) // если вершина смежная и непосещенная
                     {
-                        stack.Push(i);
+                        stack.Push(i); //  то кладем в стек
                     }
                 }
             }
@@ -387,7 +387,7 @@ namespace DGrath
         private void EulerianCycle()
         {
 
-            if (DFC(0) == false)
+            if (DFC(0) == false) // поиском в глубину проверяем есть ли не непосещенные вершины, если да, то
             {
                 txbRes.Text = "";
                 txbRes.Text = "Граф не содержит эйлерова цикла, так как граф несвязный";
@@ -398,7 +398,7 @@ namespace DGrath
                 txbRes.Text = "";
                 for (int i = 0; i < V.Count; i++)
                 {
-                    if (getDegree(i, AMatrix) % 2 != 0)
+                    if (getDegree(i, AMatrix) % 2 != 0) // вычисляем степень каждой вершины и проверяем на четность
                     {
                         txbRes.Text = "Граф не содержит эйлерова цикла, так как не все вершины имеют четную степень";
                         flag = false;
@@ -413,30 +413,30 @@ namespace DGrath
                     {
                         for (int j = 0; j < V.Count; j++)
                         {
-                            matrix[i, j] = AMatrix[i, j];
+                            matrix[i, j] = AMatrix[i, j]; // матрица смежности
                         }
                     }
-                    var stack = new Stack<int>();
-                    var cycl = new Stack<int>();
-                    stack.Push(0);
-                    while (stack.Count > 0)
+                    var stack = new Stack<int>(); // временный стек
+                    var cycl = new Stack<int>(); // стек вершин цикла
+                    stack.Push(0); // заносим 1 первую во временный стек
+                    while (stack.Count > 0) // пока стек не пустой
                     {
-                        int node = stack.Peek();
-                        if (getDegree(node, matrix) > 0)
+                        int node = stack.Peek(); //  текущая вершина node равна вершине стека, берем без удаления из стека
+                        if (getDegree(node, matrix) > 0) // если у вершины есть ребра
                         {
-                            int adjacent = getAdjacent(node, matrix);
-                            stack.Push(adjacent);
-                            matrix[node, adjacent] = 0;
-                            matrix[adjacent, node] = 0;
+                            int adjacent = getAdjacent(node, matrix); // вычисляем первую смежную вершину
+                            stack.Push(adjacent); // кладем ее во временный стек
+                            matrix[node, adjacent] = 0; // удаляем ребро
+                            matrix[adjacent, node] = 0; 
                         }
-                        else
-                            cycl.Push(stack.Pop());
+                        else // если у вершины нет ребер, то
+                            cycl.Push(stack.Pop()); // кладем ее в стек цикла, удаляя из временного
                     }
 
-                    while (cycl.Count > 0)
+                    while (cycl.Count > 0) 
                     {
                         int v = cycl.Pop();
-                        txbRes.Text = txbRes.Text + " -> " + (v + 1);
+                        txbRes.Text = txbRes.Text + " -> " + (v + 1); // печатаем вершины цикла в обратном порядке (в порядке возрастания)
                     }
                 }
 
